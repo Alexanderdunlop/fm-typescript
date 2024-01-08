@@ -39,3 +39,18 @@ setTimeout(() => {
 let frontEndMastersFounding = new Date("Jan 1, 2012");
 let date1 = frontEndMastersFounding;
 let date2 = frontEndMastersFounding as any;
+
+const humid3 = 79 as number; //✔️ is 79 a number? If so, this is safe!
+
+let date3 = "oops" as any as Date; //! TypeScript thinks this is a Date now
+date3.toISOString(); //! what do we think will happen here? 🔥
+
+function add(a: number, b: number): number {
+  if (Math.random() < 0.5) {
+    return a + b;
+  }
+}
+
+const result = add(3, 4);
+result.toExponential();
+const p = new Promise(result);
